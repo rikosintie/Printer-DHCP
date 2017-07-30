@@ -50,6 +50,6 @@ Obviously, you need rights to create DHCP reservations on the server!
 * [Nmap Library stdnse](https://nmap.org/nsedoc/lib/stdnse.html#format_mac)
 * [Identifying HP Printers with NMAP and then using results in Python/Perl](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 * [PowerShell ABC's - P is for Parameters](https://devcentral.f5.com/articles/powershell-abcs-p-is-for-parameters)
-[Referencing Variables and Variable Values](https://technet.microsoft.com/en-us/library/ee692790.aspx0
+*[Referencing Variables and Variable Values](https://technet.microsoft.com/en-us/library/ee692790.aspx)
 
 
