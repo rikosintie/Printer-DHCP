@@ -20,8 +20,8 @@ Download the files in this repository and unzip them
 
 sudo nmap -p 9100 --script hp.nse 192.168.10.0/24
 
-On Linux you will need to use sudo because a syn scan is required to get the MAC address.
-On Windows do not include the sudo.
+* On Linux you will need to use sudo because a syn scan is required to get the MAC address.
+* On Windows do not include the sudo.
 
 This will generate a file named targets.txt in the directory you ran the script in.
 
