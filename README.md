@@ -25,6 +25,12 @@ On Windows do not include the sudo.
 
 This will generate a file named targets.txt in the directory you ran the script in.
 
+**Note:**
+If you change the port from 9100 to 445 it will generate a list of Microsoft computers and save them to targets.txt.
+
+
+
+
 **Run the Powershell script**
 
 Open Powershell on Windows
