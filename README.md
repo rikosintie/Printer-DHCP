@@ -17,6 +17,7 @@ You must have nmap installed. Version 7.50 is what I used for this example.
 Download the files in this repository and unzip them
 
 **Run the nmap script**
+
 sudo nmap -p 9100 --script hp.nse 192.168.10.0/24
 
 On Linux you will need to use sudo because a syn scan is required to get the MAC address.
@@ -25,8 +26,12 @@ On Windows do not include the sudo.
 This will generate a file named targets.txt in the directory you ran the script in.
 
 **Run the Powershell script**
-Open Powershell on Windows - On win7 click the start orb and type powershell. On win8-10 Google should know how.
-In the Powershell window:
+
+Open Powershell on Windows
+* On win7 click the start orb and type Powershell. 
+* On win8-10 Google should know how to run Powershell.
+
+**In the Powershell window:**
 ```
 .\printer-dhcp.ps1 -server 192.168.10.221 -scope 192.168.10.0
 netsh dhcp server 192.168.10.221 scope 192.168.10.0 add reservedip 192.168.10.235  101f746341f5 
@@ -41,10 +46,10 @@ Copy the output of the script and paste it into the Powershell window.
 Obviously, you need rights to create DHCP reservations on the server!
 
 ## References
-[Nmap Scripting] (https://nmap.org/book/nse-api.html)
-[Nmap Library stdnse](https://nmap.org/nsedoc/lib/stdnse.html#format_mac)
-[Identifying HP Printers with NMAP and then using results in Python/Perl](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
-[PowerShell ABC's - P is for Parameters](https://devcentral.f5.com/articles/powershell-abcs-p-is-for-parameters)
+* [Nmap Scripting](https://nmap.org/book/nse-api.html)
+* [Nmap Library stdnse](https://nmap.org/nsedoc/lib/stdnse.html#format_mac)
+* [Identifying HP Printers with NMAP and then using results in Python/Perl](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
+* [PowerShell ABC's - P is for Parameters](https://devcentral.f5.com/articles/powershell-abcs-p-is-for-parameters)
 [Referencing Variables and Variable Values](https://technet.microsoft.com/en-us/library/ee692790.aspx0
 
 
