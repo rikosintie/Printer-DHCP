@@ -52,7 +52,7 @@ Copy the output of the script and paste it into the Powershell window.
 Obviously, you need rights to create DHCP reservations on the server!
 
 ## References
-* [Nmap Scripting](https://nmap.org/book/nse-api.html)
+* [Nmap Scripting API](https://nmap.org/book/nse-api.html)
 * [Nmap Library stdnse](https://nmap.org/nsedoc/lib/stdnse.html#format_mac)
 * [Identifying HP Printers with NMAP and then using results in Python/Perl](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 * [PowerShell ABC's - P is for Parameters](https://devcentral.f5.com/articles/powershell-abcs-p-is-for-parameters)
