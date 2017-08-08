@@ -13,8 +13,13 @@ Nothing Earth shattering but it saved a lot of time over point and clicking to c
 
 ## Usage
 
-You must have nmap installed. Version 7.50 is what I used for this example.
-Download the files in this repository and unzip them
+* You must have [nmap](https://nmap.org/download.html) installed. Version 7.50 is what I used for this example.
+* You have to be on the same vlan as the printer. The reason is that we need the MAC address of each device and MAC Addresses don't make it past routers
+* Download the files in this repository and unzip them. If you have Git installed you can just use: 
+```
+git clone https://github.com/rikosintie/Printer-DHCP.git
+```
+To clone the scripts
 
 **Run the nmap script**
 
