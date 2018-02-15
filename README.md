@@ -23,6 +23,8 @@ To clone the scripts
 
 **Run the nmap script**
 
+NOTE: since the script must pull the MAC Address you need to be on the same subnet as the printers.
+
 sudo nmap -p 9100 --script hp.nse 192.168.10.0/24
 
 * On Linux you will need to use sudo because a syn scan is required to get the MAC address.
