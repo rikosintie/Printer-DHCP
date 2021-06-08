@@ -66,4 +66,5 @@ Obviously, you need rights to create DHCP reservations on the server!
 * [PowerShell ABC's - P is for Parameters](https://devcentral.f5.com/articles/powershell-abcs-p-is-for-parameters)
 * [Referencing Variables and Variable Values](https://technet.microsoft.com/en-us/library/ee692790.aspx)
 * [Read Data from a CSV file](https://stackoverflow.com/questions/46286784/read-data-from-csv-file-using-powershell-and-strore-each-line-data-in-an-array)
-
+* [MS article on Powershell for DHCP deployment](https://docs.microsoft.com/en-us/windows-server/networking/technologies/dhcp/dhcp-deploy-wps#bkmk_dhcpwps)
+* [MS Article on Powershell Commands for DHCP](https://techcommunity.microsoft.com/t5/itops-talk-blog/how-to-manage-dhcp-using-powershell/ba-p/744461)
