@@ -1,3 +1,8 @@
+![made-with-Powershell](https://img.shields.io/badge/Made%20With-Powershell-Success)
+![GitHub language count](https://img.shields.io/github/languages/count/rikosintie/nmap-python)
+![Twitter Follow](https://img.shields.io/twitter/follow/rikosintie?style=social)
+
+
 # Printer-DHCP
 Scans for HP printers using nmap and creates MS DHCP reservations with Powershell
 
