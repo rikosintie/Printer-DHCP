@@ -55,8 +55,9 @@ Open Powershell on Windows
 * On win7 click the start orb and type Powershell. 
 * On win8-10 Google should know how to run Powershell.
 
-**In the Powershell window:**
-```
+**In the Powershell terminal:**
+
+```powershell
 .\printer-dhcp.ps1 -server 192.168.10.221 -scope 192.168.10.0
 netsh dhcp server 192.168.10.221 scope 192.168.10.0 add reservedip 192.168.10.235  101f746341f5 
 netsh dhcp server 192.168.10.221 scope 192.168.10.0 add reservedip 192.168.10.236  101f746341f6 
@@ -69,11 +70,45 @@ Copy the output of the script and paste it into the Powershell window.
 
 Obviously, you need rights to create DHCP reservations on the server!
 
+## A more generic script
+I wanted to create reservations for new surveillance cameras and be able to pull the data from a csv file.  
+
+The script `dhcp-csv.ps1` accepts the server, scope parameters but also -filename <filename.csv>  
+
+I added the filename so that at multi-site customers I could keep separate files for each location.
+
+Here is an example:  
+
+```powershell
+./dhcp-csv.ps1 -server 10.76.23.110 -scope 10.76.20.0 -filename ./HS-DHCP.csv
+netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.134 E0A7001D5C92
+netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.135 E0A7001D5CD7
+netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.136 E0A7001D5CA8
+netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.115 E0A7001D4E00
+netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.116 E0A7001D5CA5
+```
+
+Powershell makes it very easy to use parameters. Here is the complete script:  
+
+```powershell
+param ([string] $server = "server", [string]$scope = "scope", [string]$filename = "filename")
+$a = Import-Csv $filename
+foreach ($item in $a) {
+$ip=$($item.IP)
+$mac=$($item.MAC)
+#remove colons since MS DHCP can't deal with a real mac address
+$mac=$mac-replace'[:]'
+$name = $($item."Camera Lables")
+write-host "netsh dhcp server $server scope $scope add reservedip $ip $mac $name"
+}
+```
+
 ## References
 * [Nmap Scripting API](https://nmap.org/book/nse-api.html)
 * [Nmap Library stdnse](https://nmap.org/nsedoc/lib/stdnse.html#format_mac)
 * [Identifying HP Printers with NMAP and then using results in Python/Perl](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 * [PowerShell ABC's - P is for Parameters](https://devcentral.f5.com/articles/powershell-abcs-p-is-for-parameters)
+* [How to Use Parameters in PowerShell Part I](https://www.red-gate.com/simple-talk/sysadmin/powershell/how-to-use-parameters-in-powershell/)
 * [Referencing Variables and Variable Values](https://technet.microsoft.com/en-us/library/ee692790.aspx)
 * [Read Data from a CSV file](https://stackoverflow.com/questions/46286784/read-data-from-csv-file-using-powershell-and-strore-each-line-data-in-an-array)
 * [MS article on Powershell for DHCP deployment](https://docs.microsoft.com/en-us/windows-server/networking/technologies/dhcp/dhcp-deploy-wps#bkmk_dhcpwps)
