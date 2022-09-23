@@ -45,6 +45,11 @@ If you change the port from 9100 to 445 it will generate a list of Microsoft com
 
 
 **Run the Powershell script**
+On Linux/Mac  
+Open a terminal  
+pwsh [enter]  
+
+This will open a powershell session
 
 Open Powershell on Windows
 * On win7 click the start orb and type Powershell. 
