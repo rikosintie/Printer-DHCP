@@ -73,14 +73,20 @@ Obviously, you need rights to create DHCP reservations on the server!
 ## A more generic script
 I wanted to create reservations for new surveillance cameras and be able to pull the data from a csv file.  
 
-The script `dhcp-csv.ps1` accepts the server, scope parameters but also -filename <filename.csv>  
+The script `dhcp-csv.ps1` accepts -filename <filename.csv> as the input file.
 
-I added the filename so that at multi-site customers I could keep separate files for each location.
+The CSV file has columns:
+* DHCP_server
+* DHCP_scope
+* Camera Labels
+* MAC
+* IP Address
 
-Here is an example:  
+
+Here is an example of the output:  
 
 ```powershell
-./dhcp-csv.ps1 -server 10.76.23.110 -scope 10.76.20.0 -filename ./HS-DHCP.csv
+./dhcp-csv.ps1 -filename ./HS-DHCP.csv
 netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.113 E0A7002E2C63 HS/MS-CAM 13
 netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.114 E0A7002377F9 HS/MS-CAM 14
 netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.115 E0A700237725 HS/MS-CAM 15
@@ -92,18 +98,45 @@ netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.118 E0A7
 Powershell makes it very easy to use parameters. Here is the complete script:  
 
 ```powershell
-param ([string] $server = "server", [string]$scope = "scope", [string]$filename = "filename")
+param ([string]$filename = "filename")
 $a = Import-Csv $filename
 foreach ($item in $a) {
-$ip=$($item.IP)
+$ip=$($item."IP Address")
 $mac=$($item.MAC)
-#remove colons since MS DHCP can't deal with a real mac address
+$server =$($item.DHCP_server)
+$scope=$($item.DHCP_scope)
+#remove colons/dashes since MS DHCP can't deal with a real mac address
 $mac=$mac-replace'[:]'
 $mac=$mac-replace'[-]'
 $name = $($item."Camera Labels")
 write-host "netsh dhcp server $server scope $scope add reservedip $ip $mac $name"
-}
 ```
+
+Mac/Linux users
+You can create the following alias in your .bashrc or .zshrc file and then quickly display CSV files on the terminal:  
+
+I find it very useful when deveoloping scripts to be able to display the CSV file so easily.  
+
+```#Display csv data at the terminal
+alias csv='ls *.csv | pbcopy ; sed s/,/,:/g $(pbpaste) | column -t -s: | sed s/,//g | cut -c-180'
+```
+
+Here is a sample:  
+
+```
+csv
+Item  Camera Labels         MAC         IP Address    DHCP_Server   DHCP_Scope
+13    HS/MS-CAM 13   E0-A7-00-2E-2C-63  10.76.20.113  10.76.23.110  10.76.20.0
+14    HS/MS-CAM 14   E0-A7-00-23-77-F9  10.76.20.114  10.76.23.110  10.76.20.0
+15    HS/MS-CAM 15   E0-A7-00-23-77-25  10.76.20.115  10.76.23.110  10.76.20.0
+16    HS/MS-CAM 16   E0-A7-00-1D-4E-2F  10.76.20.116  10.76.23.110  10.76.20.0
+17    HS/MS-CAM 17   E0-A7-00-1D-4E-00  10.76.20.117  10.76.23.110  10.76.20.0
+18    HS/MS-CAM 18   E0-A7-00-1D-5C-A5  10.76.20.118  10.76.23.110  10.76.20.0
+```
+
+For macOS there is also a simple gui tool called [Tabel Tool](https://github.com/jakob/TableTool) that is free on the Mac Store.  
+
+
 
 ## References
 * [Nmap Scripting API](https://nmap.org/book/nse-api.html)
