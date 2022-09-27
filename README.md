@@ -81,11 +81,12 @@ Here is an example:
 
 ```powershell
 ./dhcp-csv.ps1 -server 10.76.23.110 -scope 10.76.20.0 -filename ./HS-DHCP.csv
-netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.134 E0A7001D5C92
-netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.135 E0A7001D5CD7
-netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.136 E0A7001D5CA8
-netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.115 E0A7001D4E00
-netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.116 E0A7001D5CA5
+netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.113 E0A7002E2C63 HS/MS-CAM 13
+netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.114 E0A7002377F9 HS/MS-CAM 14
+netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.115 E0A700237725 HS/MS-CAM 15
+netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.116 E0A7001D4E2F HS/MS-CAM 16
+netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.117 E0A7001D4E00 HS/MS-CAM 17
+netsh dhcp server 10.76.23.110 scope 10.76.20.0 add reservedip 10.76.20.118 E0A7001D5CA5 HS/MS-CAM 18
 ```
 
 Powershell makes it very easy to use parameters. Here is the complete script:  
