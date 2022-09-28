@@ -75,7 +75,7 @@ I wanted to create reservations for new surveillance cameras and be able to pull
 
 The script `dhcp-csv.ps1` accepts -filename <filename.csv> as the input file.
 
-The CSV file has columns:
+The CSV file needs the following column headers:
 * DHCP_server
 * DHCP_scope
 * Camera Labels
