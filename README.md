@@ -134,7 +134,7 @@ Item  Camera Labels         MAC         IP Address    DHCP_Server   DHCP_Scope
 18    HS/MS-CAM 18   E0-A7-00-1D-5C-A5  10.76.20.118  10.76.23.110  10.76.20.0
 ```
 
-For macOS there is also a simple gui tool called [Tabel Tool](https://github.com/jakob/TableTool) that is free on the Mac Store.  
+For macOS there is also a simple gui tool called [Table Tool](https://github.com/jakob/TableTool) that is free on the Mac Store.  
 
 
 
