@@ -76,11 +76,11 @@ I wanted to create reservations for new surveillance cameras and be able to pull
 The script `dhcp-csv.ps1` accepts -filename <filename.csv> as the input file.
 
 The CSV file needs the following column headers:
-* DHCP_server
-* DHCP_scope
-* Camera Labels
-* MAC
-* IP Address
+* DHCP_server --- IP address of the DHCP server
+* DHCP_scope ---- The IP subnet of the scope
+* Camera Labels - The description for hte reservation
+* MAC ----------- The MAC Address. It can have ":" or "-" separators
+* IP Address ---- IP address to assign to the reservation
 
 
 Here is an example of the output:  
